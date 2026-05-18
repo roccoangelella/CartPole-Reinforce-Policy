@@ -14,18 +14,20 @@ import numpy as np
 import torch
 import matplotlib.pyplot as plt
 
-from model import Policy
-from train import reinforce
+from src.model import Policy
+from src.train import reinforce
+from src.config import (
+    ENV_NAME,
+    HIDDEN_SIZE,
+    N_EPISODES,
+    GAMMA,
+    LR,
+    PRINT_EVERY,
+    device,
+)
 
 np.bool8 = np.bool_
 
-HIDDEN_SIZE = 16
-N_EPISODES  = 1000
-GAMMA       = 1.0
-LR          = 1e-2
-PRINT_EVERY = 100
-
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {device}")
 
 
@@ -56,7 +58,7 @@ def plot_scores(scores):
 def record_video(policy, n_steps=500):
     video_dir = "videos"
 
-    eval_env = gym.make("CartPole-v1", render_mode="rgb_array")
+    eval_env = gym.make(ENV_NAME, render_mode="rgb_array")
     eval_env = gym.wrappers.RecordVideo(
         eval_env,
         video_folder=video_dir,
@@ -79,7 +81,7 @@ def record_video(policy, n_steps=500):
 
 
 def main():
-    env = gym.make("CartPole-v1")
+    env = gym.make(ENV_NAME)
 
     obs_space = env.observation_space
     act_space = env.action_space
