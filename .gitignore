@@ -1,0 +1,5 @@
+videos/
+.venv/
+__pycache__
+policy_weights.pth
+learning_curve.png
