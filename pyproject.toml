@@ -6,10 +6,18 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "torch>=2.0",
-    "gymnasium[classic-control,other]>=0.29",
+    "gymnasium[classic-control,mujoco,other]>=0.29",
     "numpy>=1.24",
     "matplotlib>=3.7",
 ]
 
 [project.scripts]
 train = "main:main"
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
