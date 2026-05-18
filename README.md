@@ -11,8 +11,10 @@ It comes from the **HuggingFace Deep Reinforcement Learning Course**, specifical
 ```
 .
 ├── main.py        # runs training and records the evaluation video
-├── train.py       # the REINFORCE training loop
-├── model.py       # the MLP policy network
+├── src/           # source code directory
+│   ├── config.py  # hyperparameters and constants
+│   ├── train.py   # the REINFORCE training loop
+│   └── model.py   # the MLP policy network
 ├── pyproject.toml # dependencies managed with uv
 └── README.md
 ```
